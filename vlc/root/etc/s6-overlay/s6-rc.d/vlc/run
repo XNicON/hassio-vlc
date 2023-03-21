@@ -1,0 +1,13 @@
+#!/command/with-contenv bashio
+set -e
+
+CONFIG_PATH=/data/options.json
+HTTP_PASS="$(jq --raw-output '.http_password' $CONFIG_PATH)"
+TELNET_PASS="$(jq --raw-output '.telnet_password' $CONFIG_PATH)"
+
+sed -i 's/geteuid/getppid/' /usr/bin/vlc
+sed -i '197s#.*#    dir = dir == undefined ? "file:///media" : dir;#' /usr/share/vlc/lua/http/js/controllers.js
+
+bashio::log.info  'Start vlc'
+
+cvlc -I http --extraintf telnet --http-port 9892 --http-password $HTTP_PASS --telnet-password $TELNET_PASS --telnet-port 4212 --aout=pulse
