@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bashio
+
+CONFIG_PATH=/data/options.json
+TELNET_PASS="$(jq --raw-output '.password' $CONFIG_PATH)"
+
+bashio::log.info 'Start vlc'
+
+cvlc -I telnet --telnet-password $TELNET_PASS --telnet-port 4212 --aout=pulse 2>/dev/null

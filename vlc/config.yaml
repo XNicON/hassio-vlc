@@ -9,25 +9,18 @@ arch:
   - aarch64
   - amd64
   - i386
-startup: application
+startup: services
+init: false
 boot: auto
 audio: true
-panel_icon: mdi:music-circle
-ingress: true
-ingress_port: 9892
 options:
-  telnet_password: vlc
-  http_password: vlc
+  password: vlc
 schema:
-  telnet_password: str
-  http_password: str
+  password: str
 ports:
-  9892/tcp: 9892
   4212/tcp: 4212
 ports_description:
-  9892/tcp: Web Frontend
   4212/tcp: VLC Connection
-webui: http://[HOST]:[PORT:9892]/
 map:
   - share:ro
   - media:ro
