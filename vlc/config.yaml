@@ -1,5 +1,5 @@
 name: VLC
-version: 1.0.0
+version: 1.0.1
 slug: hassio_vlc
 description: Play multimedia locally using VLC player
 url: https://github.com/xnicon/hassio-vlc

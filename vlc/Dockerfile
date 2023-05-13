@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:13.1.3
+ARG BUILD_FROM=hassioaddons/base:14.0.0
 
 FROM $BUILD_FROM AS build-base
 
